@@ -1,0 +1,34 @@
+<html>
+	<head th:replace="~{base :: head}"></head>
+	<body>
+		<div th:replace="~{base :: logo}"></div>
+		<div class="container">	
+			<div th:replace="~{base :: titulo('Novo Pedido')}"></div>
+			<form class="form-control mt-3" th:object="${pedidoDto}" action="/pedido/novo" method="POST">
+				<div class="form-group">
+					<label for="nomeProduto">Produto</label>
+					<input class="form-control" th:errorclass="is-invalid" th:field="*{nomeProduto}" aria-describedby="produtoHelp" placeholder="Nome do produto">
+					<small id="produtoHelp" class="form-text text-muted">Informe qual o nome do produto.</small>
+					<div class="invalid-feedback" th:errors="*{nomeProduto}"></div>
+				</div>
+				<div class="form-group">
+					<label for="urlProduto">Url</label>
+					<input class="form-control" th:errorclass="is-invalid"  th:field="*{urlProduto}" aria-describedby="urlHelp" placeholder="Url do produto">
+					<small id="urlHelp" class="form-text text-muted">Procure em um site um produto que você deseja e cole a url da página aqui.</small>
+					<div class="invalid-feedback" th:errors="*{urlProduto}"></div>
+				</div>
+				<div class="form-group">
+					<label for="imagemProduto">Imagem</label>
+					<input class="form-control" th:errorclass="is-invalid" th:field="*{imagemProduto}" aria-describedby="imagemHelp" placeholder="Url da imagem">
+					<small id="imagemHelp" class="form-text text-muted">Copie a url de uma boa imagem do produto e cole aqui para ajudar a conseguir compradores.</small>
+					<div class="invalid-feedback" th:errors="*{imagemProduto}"></div>
+				</div>
+				<div class="form-group">
+					<label for="descricao">Descrição</label>
+					<textarea class="form-control" th:field="*{descricao}" placeholder="Adicione detalhes importantes para ajudar o comprador"></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Cadastrar</button>
+			</form>
+		</div>
+	</body>
+</html>
